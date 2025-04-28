@@ -2,107 +2,93 @@
 $customizerHidden = 'customizer-hide';
 $configData = Helper::appClasses();
 @endphp
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Osaka - One Page Portfolio Bootstrap 4">
+	<meta name="author" content="SVYYAT">
+	<title>RVP ->- Review Verfied Products</title>
+    <link rel="stylesheet" href="{{asset('asscte/css/login.css')}}">
+	<link rel="stylesheet" href="{{asset('asscte/css/bootstrap.min.css')}}">
+</head>
+<body>
 
-@extends('layouts/layoutMaster')
-
-@section('title', 'Login Cover - Pages')
-
-@section('vendor-style')
-@vite([
-  'resources/assets/vendor/libs/@form-validation/form-validation.scss'
-])
-@endsection
-
-@section('page-style')
-@vite([
-  'resources/assets/vendor/scss/pages/page-auth.scss'
-])
-@endsection
-
-@section('vendor-script')
-@vite([
-  'resources/assets/vendor/libs/@form-validation/popular.js',
-  'resources/assets/vendor/libs/@form-validation/bootstrap5.js',
-  'resources/assets/vendor/libs/@form-validation/auto-focus.js'
-])
-@endsection
-
-@section('page-script')
-@vite([
-  'resources/assets/js/pages-auth.js'
-])
-@endsection
-
-@section('content')
-<div class="authentication-wrapper authentication-cover">
-  <!-- Logo -->
-  <a href="{{url('/')}}" class="app-brand auth-cover-brand">
-    <span class="app-brand-logo demo">@include('_partials.macros',['height'=>20,'withbg' => "fill: #fff;"])</span>
-    <span class="app-brand-text demo text-heading fw-bold">{{ config('variables.templateName') }}</span>
-  </a>
-  <!-- /Logo -->
-  <div class="authentication-inner row m-0">
-    <!-- /Left Text -->
-    <div class="d-none d-lg-flex col-lg-8 p-0">
-      <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-        <img src="{{ asset('assets/img/illustrations/auth-login-illustration-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="my-5 auth-illustration" data-app-light-img="illustrations/auth-login-illustration-light.png" data-app-dark-img="illustrations/auth-login-illustration-dark.png">
-
-        <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png">
-      </div>
-    </div>
-    <!-- /Left Text -->
-
-    <!-- Login -->
-    <div class="d-flex col-12 col-lg-4 align-items-center authentication-bg p-sm-12 p-6">
-      <div class="w-px-400 mx-auto mt-12 pt-5">
-        <h4 class="mb-1">Welcome to {{ config('variables.templateName') }}! 👋</h4>
-        <p class="mb-6">Please sign-in to your account and start the adventure</p>
-
-        <form id="formAuthentication" class="mb-6" action="{{route('login')}}" method="POST">
+	<div class="login-container">
+		<div class="login-wrap">
+		  <div class="login-html">
+			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+			<div class="login-form">
+			  <!-- SIGN IN FORM -->
+			  <form id="loginForm" action="{{route('login')}}" method="POST" class="sign-in-htm">
           @csrf
-          <div class="mb-6">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus>
-            @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-          </div>
-          <div class="mb-6 form-password-toggle">
-            <label class="form-label" for="password">Password</label>
-            <div class="input-group input-group-merge">
-              <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-              <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-            </div>
-          </div>
-          <div class="my-8">
-            <div class="d-flex justify-content-between">
-              <div class="form-check mb-0 ms-2">
-                <input class="form-check-input" name="remember" type="checkbox" id="remember-me">
-                <label class="form-check-label" for="remember-me">
-                  Remember Me
-                </label>
-              </div>
-              <a href="{{url('auth/forgot-password-cover')}}">
-                <p class="mb-0">Forgot Password?</p>
-              </a>
-            </div>
-          </div>
-          <button class="btn btn-primary d-grid w-100">
-            Sign in
-          </button>
-        </form>
+				<div class="group">
+				  <label for="login-email" class="label">Email</label>
+				  <input id="login-email" name="email" type="email" class="input" required>
+          @error('email')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+				</div>
+				<div class="group">
+				  <label for="login-password" class="label">Password</label>
+				  <input id="login-password" name="password" type="password" class="input" data-type="password" required>
+				</div>
+				<div class="group">
+				  <input id="check" type="checkbox" class="check" checked>
+				  <label for="check"><input type="checkbox" name="remember" id="vehicle1" name="vehicle1" value="Bike"> Keep me Signed in</label>
+				</div>
+				<div class="group">
+				  <input type="submit" class="button" value="Sign In">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+				  <a href="#forgot">?Forgot Password</a>
+				</div>
+			  </form>
 
-        <p class="text-center">
-          <span>New on our platform?</span>
-          <a href="{{route('register-page')}}">
-            <span>Create an account</span>
-          </a>
-        </p>
-      </div>
-    </div>
-    <!-- /Login -->
-  </div>
-</div>
-@endsection
+			  <!-- SIGN UP FORM -->
+			  <form id="signupForm" action="{{route('register')}}"method="POST" class="sign-up-htm">
+				<!-- Your signup form fields here -->
+        @csrf
+        @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
+				 <div class="group">
+				  <label for="name" class="label">Name</label>
+				  <input id="name" name="name" type="name" class="input" required>
+				</div>
+				<div class="group">
+				 <div class="group">
+				  <label for="login-email" class="label">ُEmail</label>
+				  <input id="login-email" type="email" name="email" class="input" required>
+				</div>
+				<div class="group">
+				  <label for="login-password" class="label">Password</label>
+				  <input id="login-password" name="password" type="password" class="input" data-type="password" required>
+				</div>
+				<div class="group">
+				  <input id="check" type="checkbox" class="check" checked>
+				  <label for="check"> <input type="checkbox" name="remember" id="vehicle1" name="vehicle1" value="Bike"> Keep Me Signed in</label>
+				</div>
+				<div class="group">
+				  <input type="submit" class=" btn btn-outline-secondary btn-lg w-100  rounded-pill" value="Create Account">
+				</div>
+				<div class="hr"></div>
+			  </form>
+			</div>
+		  </div>
+		</div>
+	  </div>
+    <script src="{{asset('asscte/js/main.js')}}"> </script>
+</body>
+</html>

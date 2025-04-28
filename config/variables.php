@@ -1,9 +1,9 @@
 <?php
 // Variables
 return [
-  "creatorName" => "Reviews Detection",
+  "creatorName" => "RVP",
   "creatorUrl" => "/",
-  "templateName" => "Reviews Detection",
+  "templateName" => "RVP",
   "templateSuffix" => "Bootstrap Admin Template",
   "templateVersion" => "2.0.0",
   "templateFree" => false,
